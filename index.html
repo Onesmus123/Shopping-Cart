@@ -4,30 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <link rel="stylesheet" href="styles.css">
     <title>Sheep Farm</title>
 </head>
 <body>
     <header>
-        <div class="overlay"></div>
         <nav>
             <h2>DORPER SHEEP FARM</h2>
+            <div class="hamburger">
+                ☰
+            </div>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li class="cart">
-                    <a href="cart.html">
-                        <ion-icon name="basket"></ion-icon>Cart<span>0</span>
-                    </a>
-                </li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#blogs">Blogs</a></li>
+                <li><a href="#contact">Contact Us</a></li>
             </ul>
+            <div class="cart">
+                <a href="cart.html">
+                    <ion-icon name="basket"></ion-icon>Cart<span>0</span>
+                </a>
+            </div>
         </nav>
     </header>
 
-
+    <!-- Main Content Section -->
     <div class="container">
         <div class="image">
             <img src="images/Mature Ram.jpg" alt="Ram">
@@ -60,9 +65,50 @@
             <a class="add-cart cart5" href="#">Add Cart</a>
         </div>
     </div>
-    
 
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-<script src="main.js"></script>
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <h2>About Us</h2>
+        <p>Welcome to Dorper Sheep Farm! We specialize in breeding and raising high-quality Dorper sheep, known for their excellent meat quality and adaptability. Our farm is committed to sustainable farming practices and providing the best care for our sheep. We believe in producing healthy, high-value animals that meet the needs of our customers. Whether you're a commercial farmer or just getting started, we have something for everyone. Join us in supporting local farming and animal husbandry!</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2>Get in Touch</h2>
+        <p>If you have any questions or want to inquire about our products, feel free to reach out to us. We're here to help!</p>
+
+        <!-- Contact Form -->
+        <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="9149c909-9b4e-4d9d-9ded-a6a517ed985c">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Dorper Sheep Farm. All rights reserved.</p>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#blogs">Blogs</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </footer>
+
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>

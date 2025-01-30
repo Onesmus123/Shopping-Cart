@@ -2,65 +2,85 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+body{
     font-family: 'Roboto', sans-serif;
+    background: linear-gradient(#ffdad5, #fff7f9);
 }
 
 header{
-    background-image: url(images/cover.avif);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 250px;
+    text-decoration:none;
+}
+
+/* Navbar Styles */
+header nav {
+    background: linear-gradient(45deg, #ff994f, #fa6d86);
+    padding: 15px 30px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+header nav h2 {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+nav li {
     position: relative;
 }
-
-.overlay{
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    height: 100%;
-    right: 0;
-    bottom: 0;
-    padding: 0 !important;
-    margin: 0 !important;
-    background-color: rgba(10, 10, 10, 0.3);
-}
-
-nav{
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 2;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 50px 60px 0 60px;
-}
-
-nav li {
-    list-style: none;
-    display: inline-block;
-    padding-right: 10px;
-padding-left: 10px;
-}
-
-nav li span {
-    padding-left: 5px;
-}
-
-li a {
-    padding: 5px;
-    background-color: #fff;
+nav li a {
     text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+.hamburger{
+    display: none;
+}
+
+/* Hover Effects */
+nav li a:hover {
+    background-color: #fff;
+    color: #ff994f;
+    transform: scale(1.05);
+}
+nav li a:active {
+    background-color: #ff6f61;
+    color: white;
+}
+
+/* Cart Icon */
 .cart a {
     background-color: royalblue;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+.cart a:hover {
+    background-color: #fa6d86;
     color: #fff;
-    cursor: pointer;
-    text-decoration: none;
+    transform: scale(1.05);
+}
+
+.cart a ion-icon {
+    font-size: 18px;
 }
 
 .container,
@@ -201,5 +221,193 @@ img{
 
 .basketTotal {
     width: 10%;
+}
+
+/* About Section */
+.about-section {
+    padding: 40px;
+    background-color: #f9f9f9;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.about-section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #a363aa;
+    font-weight: 600;
+}
+
+.about-section p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 40px;
+    background-color: #f1f1f1;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.contact-section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #a363aa;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.contact-section p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form label {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    align-self: flex-start;
+}
+
+form input {
+    width: 100%;
+    color: #666;
+    outline: none;
+    font-weight: 500;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    font-size: 16px;
+}
+
+form input:focus{
+    border: 2px solid #ff994f;
+}
+
+form textarea{
+    height: 200px;
+    width: 100%;
+    color: #666;
+    outline: none;
+    font-weight: 500;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+form textarea:focus{
+    border: 2px solid #ff994f;
+}
+
+form button {
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: royalblue;
+    color: #fff;
+    gap: 10px;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    background: linear-gradient(270deg, #ff994f, #fa6d86);
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: darkblue;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+footer ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+footer ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    header nav {
+        padding: 10px 15px; /* Less padding on smaller screens */
+        flex-direction: column; /* Stack items vertically */
+        text-align: center; /* Center-align text */
+    }
+
+    nav ul {
+        display: none; /* Hide menu by default */
+        flex-direction: column; /* Stack menu items vertically */
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    nav li a {
+        font-size: 18px; /* Slightly larger text on mobile */
+        padding: 12px 20px;
+        border-radius: 25px;
+    }
+
+    nav ul.active {
+        display: flex; /* Show menu when 'active' class is added */
+    }
+
+    .cart {
+        margin-top: 10px; /* Add spacing between cart and menu */
+    }
+    /* Hamburger Menu */
+    .hamburger {
+        display: block;
+        cursor: pointer;
+        font-size: 24px;
+        color: white;
+    }
+
+    .hamburger.active {
+        color: #fa6d86;
+    }
+}
+
+    /* For screens smaller than 480px (portrait mode) */
+@media (max-width: 480px) {
+    nav li a {
+        font-size: 14px; /* Adjust font size */
+        padding: 10px 15px;
+    }
+
+    header nav h2 {
+        font-size: 20px; /* Reduce heading size */
+    }
 }
 
