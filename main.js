@@ -2,10 +2,10 @@ let carts = document.querySelectorAll('.add-cart');
 
 // Product Data Array
 let products = [
-    { name: 'Mature Ram', tag: 'matureram', price: 250, inCart: 0 },
-    { name: 'Young Ram', tag: 'youngram', price: 200, inCart: 0 },
-    { name: 'Mature Ewe', tag: 'matureewe', price: 150, inCart: 0 },
-    { name: 'Young Ewe', tag: 'youngewe', price: 100, inCart: 0 },
+    { name: 'Mature Ram', tag: 'matureram', price: 25000, inCart: 0 },
+    { name: 'Young Ram', tag: 'youngram', price: 15000, inCart: 0 },
+    { name: 'Mature Ewe', tag: 'matureewe', price: 15000, inCart: 0 },
+    { name: 'Young Ewe', tag: 'youngewe', price: 10000, inCart: 0 },
     { name: 'Napier Grass', tag: 'napiergrass', price: 20, inCart: 0 }
 ];
 
@@ -17,7 +17,7 @@ for (let i = 0; i < carts.length; i++) {
     });
 }
 
-// Load cart item numbers
+// Update cart item count on page load and whenever the cart changes
 function onLoadCartNumbers() {
     let productNumbers = localStorage.getItem('cartNumbers');
     if (productNumbers) {
@@ -25,7 +25,7 @@ function onLoadCartNumbers() {
     }
 }
 
-// Update cart item count
+// Update the cart numbers when an item is added to the cart
 function cartNumbers(product) {
     let productNumbers = localStorage.getItem('cartNumbers');
     productNumbers = parseInt(productNumbers);
@@ -55,20 +55,64 @@ function setItems(product) {
         product.inCart = 1;
         cartItems = { [product.tag]: product };
     }
+
     localStorage.setItem("productsInCart", JSON.stringify(cartItems));
+    updateCartNumbers();
 }
 
-// Update total cost
+// Calculate the total number of items in the cart
+function updateCartNumbers() {
+    let cartItems = JSON.parse(localStorage.getItem('productsInCart'));
+    let totalCartNumbers = 0;
+
+    if (cartItems) {
+        totalCartNumbers = Object.values(cartItems).reduce((acc, item) => acc + item.inCart, 0);
+    }
+
+    localStorage.setItem('cartNumbers', totalCartNumbers);
+    document.querySelector('.cart span').textContent = totalCartNumbers;
+}
+
+// Update total cost when an item is added or changed
 function totalCost(product) {
     let cartCost = localStorage.getItem('totalCost') || 0;
     cartCost = parseFloat(cartCost);  // Allow for decimal prices
     localStorage.setItem("totalCost", cartCost + product.price);
 }
 
+// Change quantity of items in the cart (increment/decrement)
+function changeQuantity(button, action) {
+    let tag = button.getAttribute('data-tag');
+    let cartItems = JSON.parse(localStorage.getItem('productsInCart'));
+    let product = cartItems[tag];
+
+    if (action === 'increment') {
+        product.inCart += 1;
+    } else if (action === 'decrement' && product.inCart > 1) {
+        product.inCart -= 1;
+    }
+
+    // Update localStorage and the cart display
+    localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+    localStorage.setItem('totalCost', calculateTotalCost(cartItems));
+
+    updateCartNumbers();  // Update cart item count in navbar
+    displayCart();        // Re-render the cart page
+}
+
+// Format price with commas for readability
+function formatPrice(price) {
+    return price.toLocaleString();
+}
+
+// Calculate the total cost based on cart items
+function calculateTotalCost(cartItems) {
+    return Object.values(cartItems).reduce((total, item) => total + (item.price * item.inCart), 0);
+}
+
 // Display cart items in the cart page
 function displayCart() {
-    let cartItems = localStorage.getItem("productsInCart");
-    cartItems = JSON.parse(cartItems);
+    let cartItems = JSON.parse(localStorage.getItem('productsInCart'));
     let productContainer = document.querySelector(".products");
     let cartCost = localStorage.getItem('totalCost');
 
@@ -81,14 +125,14 @@ function displayCart() {
                 <img src="./images/${item.tag}.jpg" alt="${item.name}">
                 <span>${item.name}</span>
             </div>
-            <div class="price">$${item.price}.00</div>
+            <div class="price"> ${formatPrice(item.price)}.00</div>
             <div class="quantity">
                 <ion-icon name="caret-back-circle" class="decrement" data-tag="${item.tag}"></ion-icon>
                 <span>${item.inCart}</span>
                 <ion-icon name="caret-forward-circle" class="increment" data-tag="${item.tag}"></ion-icon>
             </div>
             <div class="total">
-            $${item.inCart * item.price}.00
+                 ${formatPrice(item.inCart * item.price)}.00
             </div>
             `;
         });
@@ -96,7 +140,7 @@ function displayCart() {
         productContainer.innerHTML += `
         <div class="basketTotalContainer">
             <h4 class="basketTotalTitle">Basket Total</h4>
-            <h4 class="basketTotal">$${cartCost}.00</h4>
+            <h4 class="basketTotal"> ${formatPrice(cartCost)}.00</h4>
         </div>`;
 
         // Add event listeners for increment, decrement, and remove actions
@@ -112,25 +156,7 @@ function displayCart() {
     }
 }
 
-// Change product quantity (increment or decrement)
-function changeQuantity(button, action) {
-    let tag = button.getAttribute('data-tag');
-    let cartItems = JSON.parse(localStorage.getItem('productsInCart'));
-    let product = cartItems[tag];
-
-    if (action === 'increment') {
-        product.inCart += 1;
-    } else if (action === 'decrement' && product.inCart > 1) {
-        product.inCart -= 1;
-    }
-
-    // Update localStorage and the cart display
-    localStorage.setItem('productsInCart', JSON.stringify(cartItems));
-    localStorage.setItem('totalCost', calculateTotalCost(cartItems));
-    displayCart();
-}
-
-// Remove item from cart
+// Remove item from the cart when the X icon is clicked
 function removeItem(button) {
     let tag = button.getAttribute('data-tag');
     let cartItems = JSON.parse(localStorage.getItem('productsInCart'));
@@ -141,27 +167,12 @@ function removeItem(button) {
     localStorage.setItem('totalCost', calculateTotalCost(cartItems));
 
     // Update cart numbers in navbar
-    let productNumbers = localStorage.getItem('cartNumbers') || 0;
-    localStorage.setItem('cartNumbers', productNumbers - 1);
-    document.querySelector('.cart span').textContent = productNumbers - 1;
-
+    updateCartNumbers();
+    
+    // Re-render the cart display
     displayCart();
 }
 
-// Calculate total cost based on cart items
-function calculateTotalCost(cartItems) {
-    return Object.values(cartItems).reduce((total, item) => {
-        return total + (item.price * item.inCart);
-    }, 0);
-}
-
-// Initial calls
+// Initialize cart display and cart numbers
 onLoadCartNumbers();
 displayCart();
-
-document.querySelector('.hamburger').addEventListener('click', function() {
-    document.querySelector('nav ul').classList.toggle('active');
-    this.classList.toggle('active');
-});
-
-
