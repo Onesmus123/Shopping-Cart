@@ -1,3 +1,5 @@
+/*styles.css*/
+
 *{
     margin: 0;
     padding: 0;
@@ -27,7 +29,6 @@ header nav h2 {
     color: white;
     font-size: 24px;
     font-weight: 700;
-    text-transform: uppercase;
 }
 nav ul {
     list-style: none;
@@ -40,7 +41,7 @@ nav li {
 nav li a {
     text-decoration: none;
     color: white;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 500;
     padding: 8px 16px;
     border-radius: 30px;
@@ -49,6 +50,72 @@ nav li a {
 
 .hamburger{
     display: none;
+}
+
+/* Logo with image and text */
+.logo a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 20px;
+    color: inherit;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.logo h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.logo h2:hover {
+  background: linear-gradient(to right, red, yellow, green);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent; /* fallback to ensure text color is removed */
+}
+
+@media (max-width: 1024px) {
+  header nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-top-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .nav-top-row a{
+    border-bottom: 2px solid #f1f1f1;
+  }
+
+  nav ul {
+    width: 100%;
+    display: flex;
+    flex-wrap:nowrap;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+
+  nav ul li {
+    flex: 1 1 20%;
+    display:flex;
+    justify-content: center;
+  }
+
+  nav li a {
+    font-size: 20px;
+    font-weight: 500;
+    padding: 8px 11px;
+}
 }
 
 /* Hover Effects */
@@ -420,24 +487,75 @@ footer {
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-    header nav {
-        padding: 10px 15px; /* Less padding on smaller screens */
-        flex-direction: column; /* Stack items vertically */
-        text-align: center; /* Center-align text */
-    }
+    .nav-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 
-    nav ul {
-        display: none; /* Hide menu by default */
-        flex-direction: column; /* Stack menu items vertically */
-        gap: 10px;
-        margin-top: 20px;
-    }
+}
 
-    nav li a {
-        font-size: 18px; /* Slightly larger text on mobile */
-        padding: 12px 20px;
-        border-radius: 25px;
-    }
+.logo a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 4px;
+    color: inherit;
+}
+.logo img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.logo h2 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.nav-top-row a{
+    border-bottom: none;
+}
+
+
+    /* Make logo and hamburger share same row */
+  .logo,
+  .hamburger {
+    display: inline-flex;
+    align-items:center;
+  }
+
+    .logo {
+    width: 70%;
+    justify-content: flex-start;
+  }
+
+  .hamburger {
+    width: 30%;
+    justify-content: flex-end;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+   /* Wrap logo + hamburger in flex container */
+  nav > .logo,
+  nav > .hamburger {
+    order: 1;
+  }
+
+  nav > ul {
+    order: 2;
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  nav > ul.active {
+    display: flex;
+  }
+
+    
 
     nav ul.active {
         display: flex; /* Show menu when 'active' class is added */
@@ -445,13 +563,6 @@ footer {
 
     .cart {
         margin-top: 10px; /* Add spacing between cart and menu */
-    }
-    /* Hamburger Menu */
-    .hamburger {
-        display: block;
-        cursor: pointer;
-        font-size: 24px;
-        color: white;
     }
 
     .hamburger.active {
