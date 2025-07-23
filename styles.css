@@ -161,24 +161,19 @@ nav li a:active {
 }
 
 .image {
-    margin-right: 20px;
-    width:40%;
-    margin-left: 20px;
+    width:45%;
+    margin: 10px 12px;
     position: relative;
     overflow: hidden;
     border: 1px solid rgba(0,0,0,0.1);
     border-radius: 10px;
-    margin-bottom: 20px;
     padding: 4px;
     background-color: #f9f9f9;
-}
-.image:hover{
-    cursor: pointer;
 }
 
 .image h3{
     text-align: center;
-    padding: 4px;
+    padding: 8px;
 }
 
 img{
@@ -192,24 +187,31 @@ img{
     position: absolute;
     width: 50%;
     background-color: darkgrey;
-    transition: all 0.3s ease-in-out;
-    opacity: 0;
     cursor: pointer;
     text-align: center;
     border-radius: 10px;
-}
-
-.image:hover .cart1,
-.image:hover .cart2,
-.image:hover .cart3,
-.image:hover .cart4,
-.image:hover .cart5 {
     bottom: 30%;
     left: 25%;
-    opacity: 1;
     padding: 10px;
-    text-decoration: none;
     font-weight: 600;
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+    color: black;
+    transition: all 0.3s ease;
+}
+
+.add-cart:hover {
+    background-color: #fa6d86;
+    color: white;
+    transform: scale(1.05);
+}
+
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
 }
 
 .section{
@@ -563,6 +565,18 @@ footer {
     }
 }
 
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image {
+    width: 90%; /* Adjust width to fit better on small screens */
+  }
+}
+
+
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
@@ -730,6 +744,28 @@ footer {
     animation-duration: 1.5s;
   }
   
+
+  #cart-notification {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  background-color: #4CAF50 ; /* green */
+  color: white;
+  padding: 15px 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  font-weight: 600;
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#cart-notification.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
   @keyframes fade {
     from {opacity: .4} 
     to {opacity: 1}

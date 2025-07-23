@@ -12,6 +12,23 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+document.querySelectorAll('.add-cart').forEach(button => {
+  button.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    // Show green notification
+    const notification = document.getElementById('cart-notification');
+    notification.classList.add('show');
+
+    // Hide after 2.5 seconds
+    setTimeout(() => {
+      notification.classList.remove('show');
+    }, 2500);
+
+    // Here you would also handle adding the product to cart logic
+  });
+});
+
 
 let carts = document.querySelectorAll('.add-cart');
 
