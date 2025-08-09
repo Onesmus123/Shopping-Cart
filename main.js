@@ -34,12 +34,13 @@ let carts = document.querySelectorAll('.add-cart');
 
 // Product Data Array
 let products = [
-    { name: 'Mature Ram', tag: 'matureram', price: 25000, inCart: 0 },
-    { name: 'Young Ram', tag: 'youngram', price: 15000, inCart: 0 },
+    { name: 'Dorper Ram', tag: 'matureram', price: 25000, inCart: 0 },
     { name: 'Mature Ewe', tag: 'matureewe', price: 15000, inCart: 0 },
-    { name: 'Young Ewe', tag: 'youngewe', price: 10000, inCart: 0 },
+    { name: 'Mature Buck', tag: 'gallabuck', price: 20000, inCart: 0 },
+    { name: 'Mature Doe', tag: 'galladoe', price: 12000, inCart: 0 },
     { name: 'Napier Grass', tag: 'napiergrass', price: 20, inCart: 0 }
 ];
+
 
 // Event Listeners for Add to Cart buttons
 for (let i = 0; i < carts.length; i++) {
