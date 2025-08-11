@@ -36,8 +36,8 @@ let carts = document.querySelectorAll('.add-cart');
 let products = [
     { name: 'Dorper Ram', tag: 'matureram', price: 25000, inCart: 0 },
     { name: 'Dorper Ewe', tag: 'matureewe', price: 15000, inCart: 0 },
-    { name: 'Galla Buck', tag: 'maturebuck', price: 20000, inCart: 0 },
-    { name: 'Galla Doe', tag: 'maturedoe', price: 12000, inCart: 0 },
+    { name: 'Galla Buck', tag: 'gallabuck', price: 20000, inCart: 0 },
+    { name: 'Galla Doe', tag: 'galladoe', price: 12000, inCart: 0 },
     { name: 'Napier Grass', tag: 'napiergrass', price: 20, inCart: 0 }
 ];
 
