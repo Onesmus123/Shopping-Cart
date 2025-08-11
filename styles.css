@@ -1,5 +1,153 @@
 /*styles.css*/
 
+/* Gallery Section */
+.gallery-section {
+  padding: 50px 20px;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+.gallery-section h2 {
+  color: #a363aa;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.gallery-section p {
+  color: #555;
+  max-width: 600px;
+  font-size: 20px;
+  margin: 0 auto 30px;
+}
+
+/* Modern responsive grid */
+.gallery-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* default for large screens */
+  gap: 20px;
+}
+
+.gallery {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.gallery:hover {
+  border-color: #777;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.desc {
+  padding: 15px;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* 3 columns between 768px and 1024px */
+@media (max-width: 1024px) {
+  .gallery-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 2 columns between 480px and 768px */
+@media (max-width: 768px) {
+  .gallery-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 1 column below 480px */
+@media (max-width: 480px) {
+  .gallery-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Blogs Section */
+.blogs-section {
+  padding: 50px 20px;
+  background-color: white;
+  text-align: center;
+}
+
+.blogs-section h2 {
+  color: #006400;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.blogs-section p {
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+.blogs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.blog-card {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+
+.blog-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.blog-card h3 {
+  color: #333;
+  font-size: 1.5rem;
+  margin: 15px;
+}
+
+.blog-card p {
+  color: #555;
+  padding: 0 15px 15px;
+}
+
+.blog-card a {
+  display: inline-block;
+  margin: 0 15px 15px;
+  padding: 10px 15px;
+  background-color: #006400;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.blog-card a:hover {
+  background-color: #228B22;
+}
+
+
 *{
     margin: 0;
     padding: 0;
@@ -423,11 +571,11 @@ button {
 
 /* Contact Section */
 .contact-section {
-    border-radius: 50%;
+    border-radius: 10px;
     padding: 40px;
     background-color: #f1f1f1;
     text-align: center;
-    margin-top: 50px;
+    margin: 20px;
 }
 
 .contact-section h2 {
@@ -510,6 +658,31 @@ form button:hover {
 }
 
 /* Footer Styles */
+
+.fa {
+  padding: 20px;
+  font-size: 20px;
+  width: 60px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-whatsapp {
+  background: #25D366;
+  color: white;
+}
+
 footer {
     background-color: #2c3e50;
     color: white;
@@ -529,7 +702,7 @@ footer {
 }
 
 .footer-links h4, .footer-social h4 {
-    font-size: 18px;
+    font-size: 24px;
     margin-bottom: 10px;
 }
 
@@ -539,30 +712,39 @@ footer {
     padding: 0;
 }
 
-.footer-links li, .footer-social li {
+.footer-links li {
     margin: 10px 0;
 }
 
-.footer-links a, .footer-social a {
+.footer-links a {
     text-decoration: none;
     color: white;
     transition: color 0.3s;
 }
 
-.footer-links a:hover, .footer-social a:hover {
+.footer-links a:hover {
     color: #f39c12;
     text-decoration: underline;
 }
 
 @media (max-width: 768px) {
     .footer-content {
+      flex-direction: column;
         align-items: center;
     }
 
     .footer-links, .footer-social {
-        width: 45%;
+        width: 100%;
+        display: block;
+        text-align: center;
         margin-bottom: 20px;
     }
+
+    .footer-social ul {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
 }
 
 @media (max-width: 768px) {
