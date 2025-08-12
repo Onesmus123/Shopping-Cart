@@ -1,4 +1,223 @@
 /*styles.css*/
+.checkout-btn-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+    width: 100%;
+}
+
+#checkout-btn {
+    padding: 12px 25px;
+    background: linear-gradient(270deg, #ff994f, #fa6d86);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#checkout-btn:hover {
+    background: linear-gradient(270deg, #fa6d86, #ff994f);
+    transform: scale(1.05);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .checkout-btn-container {
+        justify-content: center;
+    }
+    #checkout-btn {
+        width: 80%;
+        font-size: 18px;
+        padding: 14px;
+    }
+}
+
+/* === Checkout Page Styles === */
+
+/* Wrapper */
+.checkout-container {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* ===== ORDER SUMMARY ===== */
+.order-summary {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.order-summary h2 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #002244;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.checkout-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.checkout-item:last-child {
+    border-bottom: none;
+}
+
+.checkout-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 15px;
+}
+
+.checkout-item span {
+    font-size: 1rem;
+    color: #333;
+}
+
+.checkout-item .item-qty-price {
+    margin-left: auto;
+    font-weight: 500;
+    color: #444;
+}
+
+.checkout-total {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: right;
+    color: #111;
+}
+
+/* ===== PAYMENT FORM ===== */
+.payment-section {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.payment-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #002244;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.payment-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.payment-section label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.payment-section input,
+.payment-section select {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+.payment-section input:focus,
+.payment-section select:focus {
+    border-color: #002244;
+}
+
+.place-order-btn {
+    background: #002244;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.place-order-btn:hover {
+    background: #003366;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .checkout-container {
+        grid-template-columns: 1fr;
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .checkout-item img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .checkout-item span {
+        font-size: 0.95rem;
+    }
+
+    .checkout-total {
+        font-size: 1rem;
+    }
+}
+
+.checkout-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap; /* Helps buttons stack if space is tight */
+}
+
+.back-to-cart-btn {
+    padding: 0.8rem 1rem;
+    background: #bdc3c7;
+    color: #2c3e50;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.2s ease-in-out;
+}
+
+.back-to-cart-btn:hover {
+    background: #a0a4a8;
+}
+
+.place-order-btn {
+    flex: 1;
+}
+
+/* On small screens, buttons go full width */
+@media (max-width: 768px) {
+    .back-to-cart-btn, 
+    .place-order-btn {
+        text-align: center;
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+}
+
 
 /* Gallery Section */
 .gallery-section {

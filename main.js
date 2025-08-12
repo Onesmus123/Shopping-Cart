@@ -137,8 +137,12 @@ function changeQuantity(button, action) {
 
 // Format price with commas for readability
 function formatPrice(price) {
-    return price.toLocaleString();
+    // Convert to number safely by stripping commas and spaces
+    let num = parseFloat(String(price).replace(/,/g, ''));
+    if (isNaN(num)) return price;
+    return num.toLocaleString('en-KE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
+
 
 // Calculate the total cost based on cart items
 function calculateTotalCost(cartItems) {
@@ -160,34 +164,44 @@ function displayCart() {
                 <img src="./images/${item.tag}.jpg" alt="${item.name}">
                 <span>${item.name}</span>
             </div>
-            <div class="price"> ${formatPrice(item.price)}.00</div>
+            <div class="price"> ${formatPrice(item.price)}</div>
             <div class="quantity">
                 <ion-icon name="caret-back-circle" class="decrement" data-tag="${item.tag}"></ion-icon>
                 <span>${item.inCart}</span>
                 <ion-icon name="caret-forward-circle" class="increment" data-tag="${item.tag}"></ion-icon>
             </div>
             <div class="total">
-                 ${formatPrice(item.inCart * item.price)}.00
+                 ${formatPrice(item.inCart * item.price)}
             </div>
             `;
         });
 
         productContainer.innerHTML += `
-        <div class="basketTotalContainer">
-            <h4 class="basketTotalTitle">Basket Total</h4>
-            <h4 class="basketTotal"> ${formatPrice(cartCost)}.00</h4>
-        </div>`;
+    <div class="basketTotalContainer">
+        <h4 class="basketTotalTitle">Basket Total</h4>
+        <h4 class="basketTotal"> ${formatPrice(cartCost)}</h4>
+    </div>
+    <div class="checkout-btn-container">
+        <button id="checkout-btn">Proceed to Checkout →</button>
+    </div>
+`;
 
-        // Add event listeners for increment, decrement, and remove actions
-        document.querySelectorAll('.increment').forEach(button => {
-            button.addEventListener('click', () => changeQuantity(button, 'increment'));
-        });
-        document.querySelectorAll('.decrement').forEach(button => {
-            button.addEventListener('click', () => changeQuantity(button, 'decrement'));
-        });
-        document.querySelectorAll('.remove-item').forEach(button => {
-            button.addEventListener('click', () => removeItem(button));
-        });
+// Add event listeners for increment, decrement, remove
+document.querySelectorAll('.increment').forEach(button => {
+    button.addEventListener('click', () => changeQuantity(button, 'increment'));
+});
+document.querySelectorAll('.decrement').forEach(button => {
+    button.addEventListener('click', () => changeQuantity(button, 'decrement'));
+});
+document.querySelectorAll('.remove-item').forEach(button => {
+    button.addEventListener('click', () => removeItem(button));
+});
+
+// Checkout button click
+document.getElementById('checkout-btn').addEventListener('click', () => {
+    window.location.href = "checkout.html"; // Change to your checkout page
+});
+
     }
 }
 
@@ -211,6 +225,7 @@ function removeItem(button) {
 // Initialize cart display and cart numbers
 onLoadCartNumbers();
 displayCart();
+displayCheckout(); // NEW — load checkout items if on checkout.html
 
 //Carousel
 
@@ -232,4 +247,30 @@ function showSlides() {
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
   setTimeout(showSlides, 4000); // Change image every 2 seconds
+}
+
+function displayCheckout() {
+    let checkoutContainer = document.querySelector(".order-summary");
+    let cartItems = JSON.parse(localStorage.getItem("productsInCart"));
+    let cartCost = localStorage.getItem("totalCost");
+
+    if (checkoutContainer && cartItems) {
+        checkoutContainer.innerHTML = "<h2>Order Summary</h2>"; // reset
+
+        Object.values(cartItems).forEach(item => {
+            checkoutContainer.innerHTML += `
+                <div class="checkout-item" style="display:flex;align-items:center;margin-bottom:10px;">
+                    <img src="./images/${item.tag}.jpg" alt="${item.name}" style="object-fit:cover;margin-right:10px;">
+                    <span>${item.name}</span>
+                    <span style="margin-left:auto;">${item.inCart} x ${formatPrice(item.price)}</span>
+                </div>
+            `;
+        });
+
+        checkoutContainer.innerHTML += `
+            <div class="checkout-total" style="margin-top:15px;font-weight:bold;">
+                Total: ${formatPrice(cartCost)}
+            </div>
+        `;
+    }
 }
