@@ -88,7 +88,7 @@
 }
 
 .blogs-section h2 {
-  color: #006400;
+  color: #a363aa;
   font-size: 2.5rem;
   margin-bottom: 10px;
 }
@@ -96,6 +96,7 @@
 .blogs-section p {
   color: #555;
   max-width: 600px;
+  font-size: 20px;
   margin: 0 auto 30px;
 }
 
