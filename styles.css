@@ -618,13 +618,15 @@ button {
     width: 100%;
     max-width: 650px;
     display: flex;
+    text-align: center;
     justify-content: flex-start;
-    border-bottom: 4px solid lightgray;
+    border-bottom: 3px solid lightgray;
     margin: 0 auto;
 }
 
 .product-title{
     width: 45%;
+    border-bottom: 1px solid lightgray;
 }
 
 .price {
@@ -632,20 +634,26 @@ button {
     border-bottom: 1px solid lightgray;
     display: flex;
     align-items: center;
+    text-align: center;
+    justify-content: center;
 }
 
 .quantity {
-    width: 30%;
+    width: 25%;
     border-bottom: 1px solid lightgray;
     display: flex;
     align-items: center;
+    text-align: center;
+    justify-content: center;
 }
 
 .total {
-    width: 10%;
+    width: 15%;
     border-bottom: 1px solid lightgray;
     display: flex;
     align-items: center;
+    text-align: center;
+    justify-content: center;
 }
 
 .product {
@@ -674,7 +682,7 @@ button {
 .basketTotalContainer {
     display: flex;
     justify-content: flex-end;
-    width: 100%;
+    width: 95%;
     padding: 10px 0;
 }
 
@@ -685,6 +693,83 @@ button {
 .basketTotal {
     width: 10%;
 }
+
+@media screen and (max-width: 768px) {
+  .products-container {
+    width: 97%;
+    font-size: 15px;
+}
+
+.products-container ion-icon {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.product-header{
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: flex-start;
+    margin: 0 auto;
+}
+
+.product-title{
+    width: 35%;
+}
+
+.price {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.quantity {
+    width: 25%;
+    display: flex;
+    align-items: center;
+}
+
+.total {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.product {
+    width: 35%;
+    padding: 10px 0;
+    justify-content: center;
+}
+
+.products {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.products img {
+    width: 65px;
+}
+
+.basketTotalContainer {
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+    padding: 10px 0;
+    gap: 20px;
+}
+
+.basketTotalTitle {
+    width: 30%;
+}
+
+.basketTotal {
+    width: 10%;
+}
+}
+
 
 /* About Section */
 /* About Section Updated */
