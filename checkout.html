@@ -51,7 +51,7 @@
 
         <section class="payment-section">
             <h2>Payment Details</h2>
-            <form>
+            <form id="checkoutForm">
                 <label>Name:</label>
                 <input type="text" placeholder="Full Name" required>
 
@@ -110,6 +110,27 @@
   </footer>
     
     <script src="main.js"></script>
+    <script>
+document.getElementById("checkoutForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  // Save payment details to localStorage
+  const paymentDetails = {
+    name: document.querySelector('input[placeholder="Full Name"]').value,
+    phone: document.querySelector('input[placeholder="e.g. 07XX XXX XXX"]').value,
+    email: document.querySelector('input[placeholder="you@example.com"]').value,
+    county: document.querySelector('input[placeholder="County"]').value,
+    subCounty: document.querySelector('input[placeholder="Sub County"]').value,
+    address: document.querySelector('input[placeholder="Delivery Address"]').value
+  };
+  localStorage.setItem("paymentDetails", JSON.stringify(paymentDetails));
+
+  // Cart data is already in localStorage from your add-to-cart code
+  window.location.href = "order.html";
+});
+</script>
+
+
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

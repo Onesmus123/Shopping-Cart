@@ -1,0 +1,303 @@
+<!-- order.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <link rel="icon" href="images/favicon.jpg" type="image/png" />
+  <link rel="stylesheet" href="styles.css">
+  <title>Rasta Farm - Order</title>
+
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Toast Notification */
+    #toast {
+      visibility: hidden;
+      min-width: 300px;
+      background-color: #25D366;
+      color: white;
+      text-align: center;
+      border-radius: 6px;
+      padding: 16px;
+      position: fixed;
+      z-index: 9999;
+      left: 50%;
+      top: 20px;
+      transform: translateX(-50%);
+      font-size: 1rem;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      opacity: 0;
+      transition: opacity 0.5s ease, top 0.5s ease;
+    }
+
+    #toast.show {
+      visibility: visible;
+      top: 40px;
+      opacity: 1;
+    }
+
+    /* Page Layout */
+    .order-page {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 15px;
+      display: grid;
+      gap: 20px;
+    }
+
+    .order-page section {
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .order-page h2 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      color: #333;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 8px;
+    }
+
+    #paymentDetails p, 
+    #orderSummary div {
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    #paymentDetails {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #fafafa;
+    }
+
+    /* WhatsApp & Email Buttons */
+    .order-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px;
+      flex-wrap: wrap;
+    }
+
+    .order-buttons button {
+      flex: 0 1 auto;
+      padding: 12px 18px;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      color: #fff;
+      transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    #whatsappOrderBtn {
+      background-color: #25D366;
+    }
+    #whatsappOrderBtn:hover {
+      background-color: #1ebe5a;
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4);
+    }
+    #whatsappOrderBtn:active {
+      transform: scale(0.97);
+    }
+
+    #emailOrderBtn {
+      background-color: #0072C6;
+    }
+    #emailOrderBtn:hover {
+      background-color: #005b9f;
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0, 114, 198, 0.4);
+    }
+    #emailOrderBtn:active {
+      transform: scale(0.97);
+    }
+
+    /* Responsive */
+    @media (min-width: 1024px) {
+      .order-page {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 767px) {
+      .order-buttons button {
+        font-size: 0.9rem;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+        <div class="nav-top-row">
+            <div class="logo">
+        <a href="index.html">
+            <img src="images/favicon.jpg" alt="Rasta Farm Logo" />
+            <h2>Rasta FARM</h2>
+        </a>
+      </div>
+      <div class="hamburger">☰</div>
+        </div>
+      
+      <ul>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="blogs.html">Blogs</a></li>
+        <li><a href="index.html#about">About Us</a></li>
+        <li><a href="index.html#contact">Contact Us</a></li>
+        <li>
+          <div class="cart">
+            <a href="cart.html">
+              <ion-icon name="basket"></ion-icon><span>0</span>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="order-page">
+    <section id="orderSummary">
+      <h2>Order Summary</h2>
+    </section>
+
+    <section id="paymentDetails">
+      <h2>Payment Details</h2>
+    </section>
+  </main>
+
+  <div class="order-buttons">
+    <button id="whatsappOrderBtn">📱 Place Order via WhatsApp</button>
+    <button id="emailOrderBtn">📧 Place Order via Email</button>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-links">
+        <h4>Useful Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
+          <li><a href="index.html#contact">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-social">
+  <h4>Follow Us</h4>
+  <ul>
+    <li>
+      <a href="https://www.facebook.com/profile.php?id=100088141033250" target="_blank" class="fa fa-facebook"></a>
+    </li>
+    <li>
+      <a href="https://whatsapp.com/channel/0029VbAMYRd6BIEZBMMEXu0I" target="_blank" class="fa fa-whatsapp"></a>
+    </li>
+    
+  </ul>
+</div>
+
+    </div>
+    <p>&copy; 2025 Rasta FARM. All rights reserved.</p>
+  </footer>
+
+  <div id="toast">Order message copied to clipboard - please paste it in WhatsApp.</div>
+
+  <script src="main.js"></script>
+  <script>
+    function formatPrice(price) {
+      let num = parseFloat(String(price).replace(/,/g, ''));
+      if (isNaN(num)) return price;
+      return num.toLocaleString('en-KE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.className = "show";
+      setTimeout(() => toast.className = toast.className.replace("show", ""), 5000);
+    }
+
+    function getCartAndPayment() {
+      return {
+        cartItems: JSON.parse(localStorage.getItem("productsInCart")),
+        payment: JSON.parse(localStorage.getItem("paymentDetails")),
+        cartCost: localStorage.getItem("totalCost")
+      };
+    }
+
+    // Populate order summary
+    const { cartItems, payment, cartCost } = getCartAndPayment();
+    if (cartItems) {
+      const orderSummary = document.getElementById("orderSummary");
+      Object.values(cartItems).forEach(item => {
+        orderSummary.innerHTML += `
+          <div style="display:flex;align-items:center;margin-bottom:10px;">
+            <img src="./images/${item.tag}.jpg" alt="${item.name}" style="width:60px;height:60px;object-fit:cover;margin-right:10px;">
+            <span>${item.name}</span>
+            <span style="margin-left:auto;">${item.inCart} x ${formatPrice(item.price)}</span>
+          </div>`;
+      });
+      orderSummary.innerHTML += `<div style="font-weight:bold;">Total: ${formatPrice(cartCost)}</div>`;
+    }
+
+    // Populate payment details
+    if (payment) {
+      const paymentDetails = document.getElementById("paymentDetails");
+      for (let [key, value] of Object.entries(payment)) {
+        paymentDetails.innerHTML += `<p><strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${value}</p>`;
+      }
+    }
+
+    // WhatsApp order
+    document.getElementById("whatsappOrderBtn").addEventListener("click", () => {
+      let message = "*New Order Details:*\n\n";
+      Object.values(cartItems).forEach(item => {
+        message += `${item.name} - ${item.inCart} x ${item.price} KSH\n`;
+      });
+      message += `\n*Total:* ${cartCost} KSH\n\n*Payment Details:*\n`;
+      for (let [key, value] of Object.entries(payment)) {
+        message += `${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}\n`;
+      }
+
+      navigator.clipboard.writeText(message).then(() => {
+        showToast("Order message copied to clipboard - please paste it in WhatsApp.");
+      });
+
+      setTimeout(() => {
+        window.open(`https://wa.me/254790109401?text=${encodeURIComponent(message)}`, "_blank");
+      }, 2000);
+    });
+
+    // Email order
+    document.getElementById("emailOrderBtn").addEventListener("click", () => {
+      let emailBody = "New Order Details:\n\n";
+      Object.values(cartItems).forEach(item => {
+        emailBody += `${item.name} - ${item.inCart} x ${item.price} KSH\n`;
+      });
+      emailBody += `\nTotal: ${cartCost} KSH\n\nPayment Details:\n`;
+      for (let [key, value] of Object.entries(payment)) {
+        emailBody += `${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}\n`;
+      }
+      window.location.href = `mailto:rastafarm254@gmail.com?subject=${encodeURIComponent("New Order")}&body=${encodeURIComponent(emailBody)}`;
+    });
+  </script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
