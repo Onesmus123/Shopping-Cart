@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+Disallow: /admin/
+Disallow: /tmp/
+
 Sitemap: https://www.rastafarm.co.ke/sitemap.xml
