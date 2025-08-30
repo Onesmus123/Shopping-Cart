@@ -70,95 +70,121 @@
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 
   <style>
-  /* Page-specific styling */
-  .blog-hero {
-    width: 90%;
-    height: 350px;
-    background: url("images/dorper-sheep-feeding.jpg") center/cover no-repeat;
-    margin: 20px auto;
-  }
+    /* Page-specific styling */
+.blog-hero {
+  width: 90%;
+  height: 350px;
+  background: url("images/dorper-sheep-feeding.jpg") center/cover no-repeat;
+  margin: 20px auto;
+}
+
+.blog-content {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+  line-height: 1.7;
+  color: #333;
+  background-color: darkgray;
+}
+
+.blog-content h1 {
+  font-size: 2.2rem;
+  color: #006400;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.blog-content p {
+  margin-bottom: 20px;
+}
+
+.blog-content h2 {
+  color: #228B22;
+  margin-top: 30px;
+}
+
+/* Video Section Styling */
+.video-container {
+  max-width: 900px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.video-container h2 {
+  font-size: 1.5rem;
+  color: #006400;
+  margin-bottom: 15px;
+}
+
+.video-container p {
+  font-size: 1rem;
+  color: #333;
+  margin-top: 10px;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table th, table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table th {
+  background-color: #228B22;
+  color: white;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Make table responsive */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto; /* Enables horizontal scrolling */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Media Query for Mobile */
+@media (max-width: 480px) {
   .blog-content {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 20px;
-    line-height: 1.7;
-    color: #333;
-    background-color: darkgray;
+    margin: 10px;
   }
+
   .blog-content h1 {
-    font-size: 2.2rem;
-    color: #006400;
-    margin-bottom: 10px;
-    text-align: center;
+    font-size: 1.5rem;
   }
-  .blog-content p {
-    margin-bottom: 20px;
-  }
+
   .blog-content h2 {
-    color: #228B22;
-    margin-top: 30px;
+    font-size: 1.1rem;
   }
 
-  @media (max-width: 480px) {
-    .blog-content {
-      margin: 10px;
-    }
-    .blog-content h1 {
-      font-size: 1.5rem;
-    }
-    .blog-content h2 {
-      font-size: 1.1rem;
-    }
-    .blog-content p {
-      font-size: 0.9rem;
-    }
-    .blog-hero {
-      height: 200px;
-      margin: 10px auto;
-    }
+  .blog-content p {
+    font-size: 0.9rem;
   }
 
-  /* Table Styling */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+  .blog-hero {
+    height: 200px;
+    margin: 10px auto;
   }
 
+  /* Mobile table styling */
   table th, table td {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    text-align: left;
+    padding: 8px 10px;
   }
+}
 
-  table th {
-    background-color: #228B22;
-    color: white;
-  }
-
-  table tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-
-  table tr:hover {
-    background-color: #f1f1f1;
-  }
-
-  /* Make table responsive */
-  .table-responsive {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
-  }
-
-  /* Media Query for Mobile */
-  @media (max-width: 480px) {
-    table th, table td {
-      padding: 10px 12px; /* Adjust padding for small screens */
-      font-size: 0.85rem; /* Slightly smaller font size for better fit */
-    }
-  }
-
-</style>
+  </style>
 
 </head>
 
@@ -228,45 +254,47 @@
     </p>
 
     <h2>Dorper Sheep Feeding Chart</h2>
-    <p>
-      The following feeding chart provides a general guideline for daily feed allocation. Quantities may vary depending on pasture quality and body weight.
-    </p>
-    <table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse;">
-      <thead>
-        <tr>
-          <th>Category</th>
-          <th>Pasture/Forage (kg)</th>
-          <th>Concentrates (kg)</th>
-          <th>Supplements</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Lambs (0–3 months)</td>
-          <td>Ad libitum</td>
-          <td>0.1 – 0.2</td>
-          <td>Milk, minerals</td>
-        </tr>
-        <tr>
-          <td>Growers (3–6 months)</td>
-          <td>2 – 3</td>
-          <td>0.3 – 0.5</td>
-          <td>Mineral blocks</td>
-        </tr>
-        <tr>
-          <td>Breeding Rams</td>
-          <td>3 – 4</td>
-          <td>0.5 – 0.7</td>
-          <td>Protein supplements</td>
-        </tr>
-        <tr>
-          <td>Lactating Ewes</td>
-          <td>3 – 4</td>
-          <td>0.6 – 0.8</td>
-          <td>Extra protein & minerals</td>
-        </tr>
-      </tbody>
-    </table>
+<p>The following feeding chart provides a general guideline for daily feed allocation. Quantities may vary depending on pasture quality and body weight.</p>
+
+<div class="table-wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Pasture/Forage (kg)</th>
+        <th>Concentrates (kg)</th>
+        <th>Supplements</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Lambs (0 - 3 months)</td>
+        <td>Ad libitum</td>
+        <td>0.1 - 0.2</td>
+        <td>Milk, minerals</td>
+      </tr>
+      <tr>
+        <td>Growers (3 - 6 months)</td>
+        <td>2 - 3</td>
+        <td>0.3 - 0.5</td>
+        <td>Mineral blocks</td>
+      </tr>
+      <tr>
+        <td>Breeding Rams</td>
+        <td>3 - 4</td>
+        <td>0.5 - 0.7</td>
+        <td>Protein supplements</td>
+      </tr>
+      <tr>
+        <td>Lactating Ewes</td>
+        <td>3 - 4</td>
+        <td>0.6 - 0.8</td>
+        <td>Extra protein & minerals</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 
     <h2>Best Practices for Feeding Dorper Sheep</h2>
     <ul>
@@ -274,7 +302,16 @@
       <li>Introduce supplements gradually to avoid digestive upsets.</li>
       <li>Provide mineral licks at all times.</li>
       <li>Adjust feed quantities based on body condition and weight goals.</li>
-    </ul> <br><hr><br>
+    </ul> 
+
+   <!-- Video Section with Description -->
+<div class="video-container">
+  <h2>Watch Dorper Rams Feeding at Rasta Farm</h2>
+  <video width="100%" controls>
+    <source src="images/dorper-sheep-feeding.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
 
     <p>
       By following this Dorper sheep feeding chart and program, farmers can achieve faster growth rates, higher fertility, and improved meat quality. Proper nutrition is the foundation of a successful Dorper sheep farming enterprise.
