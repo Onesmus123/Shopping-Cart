@@ -151,8 +151,14 @@ table tr:hover {
 /* Make table responsive */
 .table-wrapper {
   width: 100%;
-  overflow-x: auto; /* Enables horizontal scrolling */
+  overflow-x: hidden; /* Enables horizontal scrolling */
   -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 550px) {
+  .table-wrapper {
+    overflow-x: scroll;
+  }
 }
 
 /* Media Query for Mobile */
@@ -160,6 +166,12 @@ table tr:hover {
   .blog-content {
     margin: 10px;
   }
+
+  .table-wrapper {
+  width: 100%;
+  overflow-x: scroll; /* Enables horizontal scrolling */
+  -webkit-overflow-scrolling: touch;
+}
 
   .blog-content h1 {
     font-size: 1.5rem;
